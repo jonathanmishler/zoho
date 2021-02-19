@@ -1,5 +1,5 @@
 from typing import Optional, Union, ClassVar
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from .base_request import ZohoRequest, RequestParams
 
 
@@ -48,7 +48,7 @@ class CrmParams(RequestParams):
 
 @dataclass
 class CrmRequest(ZohoRequest):
-    params: CrmParams = CrmParams()
+    params: CrmParams = field(default_factory=CrmParams)
     ENDPOINT: ClassVar[str] ="https://www.zohoapis.com/crm/v2/"
     VALID_MODULES: ClassVar[list] = [
         "Leads",
